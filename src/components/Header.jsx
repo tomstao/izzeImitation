@@ -5,7 +5,7 @@ function Header() {
         return(
             <>
                 <nav className="navbar header-nav d-flex justify-content-between align-items-center p-4">
-                    <h1 className="navbar-brand text-light fs-2"><span className='nav-title' style={{ fontStyle: 'italic', fontFamily: 'cursive' }}>Tao's dessert</span></h1>
+                    <h1 className="navbar-brand fs-2"><span className='nav-title' style={{ fontStyle: 'italic', fontFamily: 'cursive' }}>Tao's dessert</span></h1>
                     <button className="btn btn-outline-light fs-2 menu">Menu</button>
                 </nav>
             </>
