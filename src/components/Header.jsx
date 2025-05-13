@@ -22,7 +22,7 @@ function Header() {
                     <Btn className="header-btn">{'NEW items'}</Btn>
                     <Btn className="header-btn">{'Popular sweets'}</Btn>
                 </div>
-                <div className='container mt-5 quote-container row'>
+                <div className='container mt-5 quote-container row px-lg-5'>
                     <h1 className='blockquote quote-title quote row'>MEET OUR</h1>
                     <h1 className='blockquote quote-subtitle quote row'>Sweets</h1>
                 </div>
