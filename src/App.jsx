@@ -1,5 +1,5 @@
 import './App.css'
-import Header from './components/Header'
+import Header from './components/Header.jsx'
 
 function App() {
     // const [count, setCount] = useState(0)
