@@ -1,6 +1,8 @@
-import Btn from "./Buttons.jsx";
+import Btn from "/src/components/Buttons.jsx";
+import MenuButton from "/src/components/MenuButton.jsx";
 
 function Header() {
+
     function Nav() {
 
         return (
@@ -9,7 +11,8 @@ function Header() {
                     <h1 className="navbar-brand fs-2"><span className='nav-title'
                                                             style={{fontStyle: 'italic', fontFamily: 'cursive'}}>Tao's dessert</span>
                     </h1>
-                    <button className="btn btn-outline-light fs-2 menu">Menu</button>
+                    {/*<button className="btn btn-outline-light fs-2 menu">Menu</button>*/}
+                    <MenuButton />
                 </nav>
             </>
         )

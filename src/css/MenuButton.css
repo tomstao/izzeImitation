@@ -1,0 +1,36 @@
+.menu-btn {
+    width: 30px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+}
+
+.line {
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background-color: black;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Top line */
+.line.top {
+    top: 0;
+}
+
+/* Bottom line */
+.line.bottom {
+    bottom: 0;
+}
+
+/* When open */
+.line.top.open {
+    top: 10px;
+    transform: rotate(45deg);
+}
+
+.line.bottom.open {
+    bottom: 10px;
+    transform: rotate(-45deg);
+}
