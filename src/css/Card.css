@@ -11,3 +11,11 @@
     border: none;
     box-shadow: var(--primary-color)!important;
 }
+
+.order-btn {
+    background-color: var(--primary-color)!important;
+}
+.order-btn:hover {
+    background-color: var(--secondary-color)!important;
+
+}

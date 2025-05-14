@@ -1,0 +1,25 @@
+:root {
+    --primary-color: #9d1347;         /* deep pinkish red */
+    --secondary-color: #ef88ad;      /* soft pink */
+    --background-color: #f5f5dc;     /* beige */
+    --text-color: #333;
+    --white: #ffffff;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+}
+
+.navbar.transparent {
+    background-color: transparent;
+}
+
+.navbar.scrolled {
+    background-color: var(--background-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

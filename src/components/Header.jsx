@@ -1,29 +1,13 @@
 import Btn from "/src/components/Buttons.jsx";
-import MenuButton from "/src/components/MenuButton.jsx";
+import Navbar from "./Navbar.jsx";
 
 function Header() {
-
-    function Nav() {
-
-        return (
-            <>
-                <nav className="navbar header-nav d-flex justify-content-between align-items-center p-4">
-                    <h1 className="navbar-brand fs-2"><span className='nav-title'
-                                                            style={{fontStyle: 'italic', fontFamily: 'cursive'}}>Tao's dessert</span>
-                    </h1>
-                    {/*<button className="btn btn-outline-light fs-2 menu">Menu</button>*/}
-                    <MenuButton />
-                </nav>
-            </>
-        )
-    }
-
 
     return (
         <>
             <header className="text-white py-3 header">
                 <div className="container row">
-                    <Nav/>
+                    <Navbar/>
                     <div className="left-btn-wrapper">
                         <Btn className="header-btn">{'NEW items'}</Btn>
                         <Btn className="header-btn">{'Popular sweets'}</Btn>
