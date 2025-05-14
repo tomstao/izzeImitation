@@ -1,3 +1,11 @@
+:root {
+    --primary-color: #9d1347;         /* deep pinkish red */
+    --secondary-color: #ef88ad;      /* soft pink */
+    --background-color: #f5f5dc;     /* beige */
+    --text-color: #333;
+    --white: #ffffff;
+}
+
 .menu-btn {
     width: 30px;
     height: 24px;
@@ -9,7 +17,7 @@
     position: absolute;
     height: 4px;
     width: 100%;
-    background-color: black;
+    background-color: var(--primary-color);
     border-radius: 2px;
     transition: all 0.3s ease;
 }

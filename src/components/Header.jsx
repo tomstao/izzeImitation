@@ -5,7 +5,7 @@ function Header() {
 
     return (
         <>
-            <header className="text-white py-3 header">
+            <header className="text-white py-3 header mb-5">
                 <div className="container row">
                     <Navbar/>
                     <div className="left-btn-wrapper">
