@@ -23,3 +23,82 @@
     background-color: var(--background-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 9999;
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 70px);
+    background-color: var(--background-color);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3rem;
+
+    /* Transition settings */
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.menu-overlay a {
+    display: inline-block;  /* needed for transform to work cleanly */
+    color: var(--primary-color)!important;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.menu-overlay a:hover {
+    color: var(--secondary-color)!important;
+    transform: scale(1.1);
+}
+.menu-overlay.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.menu-overlay.closed {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+}
+.menu-links {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.menu-links li {
+    margin: 1rem 0;
+    font-size: 1.5rem;
+}
+
+.menu-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar.transparent {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.navbar.scrolled {
+    background-color: var(--background-color);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    z-index: 9999;
+}

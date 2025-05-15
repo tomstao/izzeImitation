@@ -1,39 +1,39 @@
-import MenuButton from "./MenuButton.jsx";
-import { useEffect, useState } from "react";
-import "/src/css/Navbar.css"
+import {useEffect, useState} from "react";
+import MenuButton from "./MenuButton";
+import '/src/css/Navbar.css';
 
 function Navbar() {
+    const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
         const onScroll = () => {
-            if (window.scrollY > 200) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
+            setScrolled(window.scrollY > 100);
         };
 
-        window.addEventListener("scroll", onScroll);
-        return () => window.removeEventListener("scroll", onScroll);
+        window.addEventListener('scroll', onScroll);
+        return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
     return (
-        <nav
-            className={`navbar header-nav d-flex justify-content-between align-items-center p-3 z-1 ${
-                scrolled ? "scrolled" : "transparent"
-            }`}
-        >
-            <h1 className="navbar-brand fs-2">
-        <span
-            className="nav-title"
-            style={{ fontStyle: "italic", fontFamily: "cursive" }}
-        >
-          Tao's dessert
-        </span>
-            </h1>
-            <MenuButton />
-        </nav>
+        <>
+            <nav
+                className={`navbar header-nav fixed-top d-flex justify-content-between align-items-center p-2 ${scrolled || menuOpen ? 'scrolled' : 'transparent'}`}>
+                <h1 className="navbar-brand fs-2">
+          <span className="nav-title" style={{fontStyle: 'italic', fontFamily: 'cursive'}}>
+            Tao's Dessert
+          </span>
+                </h1>
+                <MenuButton isOpen={menuOpen} toggle={() => setMenuOpen(!menuOpen)}/>
+            </nav>
+            <div className={`menu-overlay ${menuOpen ? 'open' : 'closed'}`}>
+                <ul className="menu-links">
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+        </>
     );
 }
 

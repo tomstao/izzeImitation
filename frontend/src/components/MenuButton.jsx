@@ -1,11 +1,8 @@
-import {useState} from "react";
-import '/src/css/MenuButton.css'
+import '/src/css/MenuButton.css';
 
-function MenuButton() {
-    const [isOpen, setIsOpen] = useState(false);
-
+function MenuButton({ isOpen, toggle }) {
     return (
-        <div className="menu-btn" onClick={() => setIsOpen(!isOpen)}>
+        <div className="menu-btn" onClick={toggle}>
             <div className={`line top ${isOpen ? 'open' : ''}`}></div>
             <div className={`line bottom ${isOpen ? 'open' : ''}`}></div>
         </div>
