@@ -36,6 +36,14 @@ def get_products():
         }
         for p in products
     ])
+class Order(db.Model):
+    __tablename__ = 'orders'
+
+    order_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    items = db.Column(db.Text, nullable=False)
+    total_price = db.Column(db.Numeric(10, 2), nullable=False)
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
