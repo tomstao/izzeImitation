@@ -1,4 +1,4 @@
-import Btn from "/frontend/src/components/Buttons.jsx";
+import Btn from "/src/components/Buttons.jsx";
 import Navbar from "./Navbar.jsx";
 
 function Header() {
