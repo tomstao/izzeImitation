@@ -5,6 +5,7 @@ import Card from './components/Card.jsx'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import FloatingCart from "./components/FloatingCart.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
     const [greeting, setGreeting] = useState('');
@@ -33,6 +34,7 @@ function App() {
                 </div>
             </div>
             <FloatingCart/>
+            <Footer />
         </>
     );
 }
