@@ -4,6 +4,7 @@ import Header from './components/Header.jsx'
 import Card from './components/Card.jsx'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import FloatingCart from "./components/FloatingCart.jsx";
 
 function App() {
     const [greeting, setGreeting] = useState('');
@@ -31,6 +32,7 @@ function App() {
                     <div className='col-md-6 d-flex justify-content-center'><Card /></div>
                 </div>
             </div>
+            <FloatingCart/>
         </>
     );
 }
