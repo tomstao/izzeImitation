@@ -1,6 +1,6 @@
 import '/src/css/MenuButton.css';
 
-function MenuButton({ isOpen, toggle }) {
+function MenuButton({isOpen, toggle}) {
     return (
         <div className="menu-btn" onClick={toggle}>
             <div className={`line top ${isOpen ? 'open' : ''}`}></div>

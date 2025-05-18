@@ -1,5 +1,4 @@
-
-function Btn({ onClick, className = '', children }) {
+function Btn({onClick, className = '', children}) {
     return (
         <button
             onClick={onClick}
@@ -9,7 +8,6 @@ function Btn({ onClick, className = '', children }) {
         </button>
     );
 }
-
 
 
 export default Btn;

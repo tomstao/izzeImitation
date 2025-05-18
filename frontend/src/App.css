@@ -55,6 +55,22 @@
     background: #F5F5DC;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /*overflow-x: hidden;*/
+}
+
+
+main.flex-fill {
+    flex: 1;
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    height: 100%;
+}
 .nav-title {
     color: var(--secondary-color)!important;
 }
@@ -150,3 +166,4 @@ h1, h2, .logo-text {
 .custom-btn:hover {
     background: rgb(239, 136, 173);
 }
+

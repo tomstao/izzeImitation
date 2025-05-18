@@ -1,7 +1,42 @@
 .main-footer {
-
-    height: 40vh!important;
+    height: 60vh !important;
     width: 100%;
-    background-color: #5a2a45
-;
+    background-color: #5a2a45;
+    color: beige;
+}
+
+.footer-center {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /*height: 100%;*/
+}
+
+
+
+.footer-center p {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    color: beige;
+    font-size: 1.85rem;
+}
+
+/*.footer-center p:hover {*/
+/*    transform: scale(1.25);*/
+/*    cursor: pointer;*/
+/*}*/
+
+.footer-hover-text {
+    display: inline-block;
+    transition: transform 0.2s ease-in-out;
+}
+
+.footer-hover-text:hover, .footer-right:hover {
+    transform: scale(1.25);
+    cursor: pointer;
+}
+
+.footer-right {
+    font-family: 'Roboto Mono', monospace;
 }

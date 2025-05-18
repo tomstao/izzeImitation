@@ -1,7 +1,7 @@
 :root {
-    --primary-color: #9d1347;         /* deep pinkish red */
-    --secondary-color: #ef88ad;      /* soft pink */
-    --background-color: #f5f5dc;     /* beige */
+    --primary-color: #9d1347; /* deep pinkish red */
+    --secondary-color: #ef88ad; /* soft pink */
+    --background-color: #f5f5dc; /* beige */
     --text-color: #333;
     --white: #ffffff;
 }
@@ -52,16 +52,18 @@
     pointer-events: none;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
 .menu-overlay a {
-    display: inline-block;  /* needed for transform to work cleanly */
-    color: var(--primary-color)!important;
+    display: inline-block; /* needed for transform to work cleanly */
+    color: var(--primary-color) !important;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .menu-overlay a:hover {
-    color: var(--secondary-color)!important;
+    color: var(--secondary-color) !important;
     transform: scale(1.1);
 }
+
 .menu-overlay.open {
     opacity: 1;
     transform: translateY(0);
@@ -73,6 +75,7 @@
     transform: translateY(-10px);
     pointer-events: none;
 }
+
 .menu-links {
     list-style: none;
     padding: 0;

@@ -1,20 +1,33 @@
-import {FaFacebook, FaTwitter, FaInstagram} from 'react-icons/fa';
-import '/src/css/SocialMediaIcons.css'
+import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaPinterest, FaTiktok } from 'react-icons/fa';import '/src/css/SocialMediaIcons.css'
 
 function SocialMedias() {
 
     return (
         <>
-            <div className="social-icons">
+            <div className="social-icons row">
+                <div className='row-cols-6'>
                 <a href="https://facebook.com" target="_blank" rel="noreferrer">
-                    <FaFacebook size={28}/>
+                    <FaFacebook size={28} />
                 </a>
                 <a href="https://twitter.com" target="_blank" rel="noreferrer">
-                    <FaTwitter size={28}/>
+                    <FaTwitter size={28} />
                 </a>
                 <a href="https://instagram.com" target="_blank" rel="noreferrer">
-                    <FaInstagram size={28}/>
+                    <FaInstagram size={28} />
                 </a>
+                </div>
+
+                <div className='row-cols-6 mt-4'>
+                <a href="https://youtube.com" target="_blank" rel="noreferrer">
+                    <FaYoutube size={28} />
+                </a>
+                <a href="https://pinterest.com" target="_blank" rel="noreferrer">
+                    <FaPinterest size={28} />
+                </a>
+                <a href="https://tiktok.com" target="_blank" rel="noreferrer">
+                    <FaTiktok size={28} />
+                </a>
+                </div>
             </div>
         </>
     )
