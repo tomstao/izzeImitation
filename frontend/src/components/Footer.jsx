@@ -6,14 +6,17 @@ function Footer() {
 
     return (
         <footer className="footer align-items-center text-center main-footer">
-            <div className="row">
-                <div className="col-md-3 mt-5 mx-1 px-5 footer-left">
-                    <div className="text-start">
+            <div className="row footer-wrapper">
+                <div className="col-md-3 mt-3 mx-1 px-5 footer-left">
+                    <div className="text-md-center">
 
-                    <p><span className='h2'>JOINT THE PARTY</span></p>
-                    <p><span>Want to make every moment sweet? Try our desserts now!</span></p>
-                    <SocialMedias/>
+                        <p><span className='h2'>JOINT THE PARTY</span></p>
+                        <p><span>Want to make every moment sweet? Try our desserts now!</span></p>
+                        <SocialMedias/>
                     </div>
+
+                    <hr className="my-3 border  border-2 footer-divider"/>
+
                 </div>
                 <div className="col-md-4 footer-center-container py-5">
                     <div className="row footer-center mt-3">
@@ -28,7 +31,9 @@ function Footer() {
                     </div>
 
                 </div>
-                <div className="col-md-4 mt-5">
+                <hr className="my-3 border border-2 footer-divider"/>
+
+                <div className="col-md-4 mt-md-5 footer-right-container">
                     <p><span className='footer-hover-text footer-right'>ABOUT US</span></p>
                     <p><span className='footer-hover-text footer-right'>HIRING</span></p>
                     <p><span className='footer-hover-text footer-right'>PRIVACY POLICY</span></p>
