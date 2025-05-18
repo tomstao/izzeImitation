@@ -1,5 +1,6 @@
 .main-footer {
-    height: 65vh !important;
+    /*height: 65vh !important;*/
+    height: auto;
     width: 100%;
     background-color: #5a2a45;
     color: beige;
@@ -58,7 +59,9 @@
 @media (max-width: 992px) {
     /* styles here for extra-small phones */
     .main-footer {
-        height: 93vh !important;
+        /*height: 93vh !important;*/
+        height: auto;
+
     }
 
 
@@ -76,7 +79,8 @@
     }
 
     .main-footer {
-        height: 140vh !important;
+        /*height: 140vh !important;*/
+        height: auto;
     }
 
 
@@ -92,6 +96,7 @@
 @media (max-width: 550px) {
     /* styles here for extra-small phones */
     .main-footer {
-        height: 145vh !important;
+        /*height: 145vh !important;*/
+        height: auto;
     }
 }

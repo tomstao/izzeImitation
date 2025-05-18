@@ -5,7 +5,7 @@ import '/src/css/Footer.css'
 function Footer() {
 
     return (
-        <footer className="footer align-items-center text-center main-footer">
+        <footer className="footer align-items-center text-center main-footer pb-5">
             <div className="row footer-wrapper">
                 <div className="col-md-3 mt-3 mx-1 px-5 footer-left">
                     <div className="text-md-center">
