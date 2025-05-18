@@ -33,10 +33,14 @@
 }
 
 .footer-hover-text:hover, .footer-right:hover {
-    transform: scale(1.25);
+    transform: scale(1.15);
     cursor: pointer;
 }
 
 .footer-right {
+    font-family: 'Roboto Mono', monospace;
+}
+.footer-left {
+
     font-family: 'Roboto Mono', monospace;
 }

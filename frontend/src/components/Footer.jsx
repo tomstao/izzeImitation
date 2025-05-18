@@ -7,7 +7,7 @@ function Footer() {
     return (
         <footer className="footer align-items-center text-center main-footer">
             <div className="row">
-                <div className="col-md-3 mt-5 mx-1 px-5">
+                <div className="col-md-3 mt-5 mx-1 px-5 footer-left">
                     <div className="text-start">
 
                     <p><span className='h2'>JOINT THE PARTY</span></p>
