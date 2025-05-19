@@ -65,6 +65,15 @@ html, body {
     background-color: #F5F5DC!important;
 }
 
+/*body {*/
+/*    overflow-y: scroll !important;*/
+/*    scrollbar-width: none !important;*/
+/*}*/
+
+/*body::-webkit-scrollbar {*/
+/*    display: none !important;*/
+/*}*/
+
 
 main.flex-fill {
     flex: 1;
