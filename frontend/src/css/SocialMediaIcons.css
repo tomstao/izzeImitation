@@ -1,12 +1,11 @@
 /* SocialMediaIcons.css */
 .social-icons a {
-    display: inline-block;
-    margin: 0 0.5rem;
-    color: var(--secondary-color);
+    color: #a11111; /* or dark gray */
     transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
 }
 
 .social-icons a:hover {
+    color: var(--secondary-color); /* deep pinkish red or similar */
     transform: scale(1.1);
-    color: beige;
 }

@@ -7,6 +7,7 @@ import FloatingCart from "./components/FloatingCart.jsx";
 import Footer from "./components/Footer.jsx";
 import ScrollingBanner from "./components/ScrollingBanner.jsx";
 import './css/HeroImg.css'
+import MiddleTransition from "./components/MiddleTransition.jsx";
 
 function App() {
     const [greeting, setGreeting] = useState('');
@@ -39,7 +40,7 @@ function App() {
             </main>
             <ScrollingBanner/>
             <div className='hero-img'></div>
-
+            <MiddleTransition/>
             <FloatingCart/>
             <Footer/>
         </div>
