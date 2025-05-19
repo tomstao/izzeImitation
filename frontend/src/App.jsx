@@ -5,6 +5,8 @@ import {useEffect, useState} from 'react'
 import axios from 'axios'
 import FloatingCart from "./components/FloatingCart.jsx";
 import Footer from "./components/Footer.jsx";
+import ScrollingBanner from "./components/ScrollingBanner.jsx";
+import './css/HeroImg.css'
 
 function App() {
     const [greeting, setGreeting] = useState('');
@@ -35,6 +37,8 @@ function App() {
                 <div className="text-center mt-4">
                 </div>
             </main>
+            <ScrollingBanner/>
+            <div className='hero-img'></div>
 
             <FloatingCart/>
             <Footer/>
