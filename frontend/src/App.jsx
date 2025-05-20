@@ -1,6 +1,5 @@
 import './App.css'
 import Header from './components/Header.jsx'
-import Card from './components/Card.jsx'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
 import FloatingCart from "./components/FloatingCart.jsx";
@@ -30,6 +29,7 @@ function App() {
                 {/*<div className='container mt-5 '>*/}
                     {/*<div className="row row-cols-1 row-cols-md-2 g-4">*/}
                         <ProductList />
+
 
                     {/*</div>*/}
                 {/*</div>*/}
