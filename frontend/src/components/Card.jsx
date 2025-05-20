@@ -1,8 +1,17 @@
 import { useState } from 'react';
 import '/src/css/Card.css';
+import {useCart} from "./CartContext.jsx";
 
 function Card() {
     const [quantity, setQuantity] = useState(1);
+    const { addToCart } = useCart();
+
+    const product = {
+        id: 'chocolate-cake',
+        name: 'Chocolate Cake',
+        price: 8.99,
+        image: 'src/assets/desserts/strawberry_shorcake.jpg',
+    };
 
     const increment = () => setQuantity(prev => prev + 1);
     const decrement = () => setQuantity(prev => Math.max(1, prev - 1));
@@ -20,9 +29,12 @@ function Card() {
                     <span className="qty-number mx-3">{quantity}</span>
                     <button className="qty-btn" onClick={increment}>+</button>
                 </div>
-
-                <a href="#" className="btn btn-primary rounded-5 order-btn border-0 shadow">
-                    Add to cart
+                <a href="#" className="btn btn-primary rounded-5 order-btn border-0 shadow"
+                   onClick={(e) => {
+                       e.preventDefault();
+                       addToCart(product, quantity);
+                   }}>
+                    Add to Cart
                 </a>
             </div>
         </div>
