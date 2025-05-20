@@ -8,7 +8,7 @@ import Footer from "./components/Footer.jsx";
 import ScrollingBanner from "./components/ScrollingBanner.jsx";
 import './css/HeroImg.css'
 import MiddleTransition from "./components/MiddleTransition.jsx";
-
+import ProductList from "./components/ProductList.jsx";
 function App() {
     const [greeting, setGreeting] = useState('');
 
@@ -27,16 +27,14 @@ function App() {
 
             <h2 className='text-center'>{greeting || 'Loading the desserts...'}</h2>
 
-                <div className='container mt-5 '>
-                    <div className="row row-cols-1 row-cols-md-2 g-4">
-                        <div className='col-md-6 d-flex justify-content-center'><Card/></div>
-                        <div className='col-md-6 d-flex justify-content-center'><Card/></div>
-                        <div className='col-md-6 d-flex justify-content-center'><Card/></div>
-                        <div className='col-md-6 d-flex justify-content-center'><Card/></div>
-                    </div>
-                </div>
-                <div className="text-center mt-4">
-                </div>
+                {/*<div className='container mt-5 '>*/}
+                    {/*<div className="row row-cols-1 row-cols-md-2 g-4">*/}
+                        <ProductList />
+
+                    {/*</div>*/}
+                {/*</div>*/}
+                {/*<div className="text-center mt-4">*/}
+                {/*</div>*/}
             </main>
             <ScrollingBanner/>
             <div className='hero-img'></div>

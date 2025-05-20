@@ -8,16 +8,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://sutommy:9750@localhost:543
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-class Product(db.Model):
-    __tablename__ = 'products'
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Text, nullable=False)
-    description = db.Column(db.Text)
-    price = db.Column(db.Numeric(10, 2), nullable=False)
-    image_url = db.Column(db.Text)
-    is_popular = db.Column(db.Boolean, default=False)
-
 @app.route('/api/greeting')
 def greet():
     return jsonify(message="Enjoy the sweetness!")
@@ -36,6 +26,17 @@ def get_products():
         }
         for p in products
     ])
+
+class Product(db.Model):
+    __tablename__ = 'products'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text, nullable=False)
+    description = db.Column(db.Text)
+    price = db.Column(db.Numeric(10, 2), nullable=False)
+    image_url = db.Column(db.Text)
+    is_popular = db.Column(db.Boolean, default=False)
+
 class Order(db.Model):
     __tablename__ = 'orders'
 

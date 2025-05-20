@@ -46,3 +46,9 @@
     font-weight: bold;
     font-size: 1.3rem;
 }
+.card-img-top {
+    height: 25rem;           /* or 180px, 220px – your choice */
+    object-fit: cover;       /* keeps aspect ratio while filling space */
+    width: 100%;             /* ensures full card width */
+    border-radius: 1rem;     /* optional: if you want rounded edges */
+}
