@@ -20,3 +20,29 @@
     background-color: var(--secondary-color) !important;
 
 }
+
+.quantity-control {
+    font-size: 1.2rem;
+}
+
+.qty-btn {
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.qty-btn:hover {
+    background-color: var(--primary-color);
+}
+
+.qty-number {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
