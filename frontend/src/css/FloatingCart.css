@@ -88,21 +88,21 @@
     cursor: pointer;
 }
 
-.floating-cart-icon {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 0.75rem;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+/*.floating-cart-icon {*/
+/*    position: fixed;*/
+/*    bottom: 2rem;*/
+/*    right: 2rem;*/
+/*    background-color: var(--primary-color);*/
+/*    color: white;*/
+/*    padding: 0.75rem;*/
+/*    border-radius: 50%;*/
+/*    cursor: pointer;*/
+/*    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);*/
+/*    z-index: 1000;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*}*/
 
 .cart-count {
     background: white;

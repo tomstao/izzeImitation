@@ -23,9 +23,12 @@ function FloatingCart() {
             <div className={`cart-drawer ${isOpen ? 'open' : ''}`}>
                 <div className="cart-header">
                     <h4>Your Cart</h4>
-                    <button className="close-btn" onClick={() => setIsOpen(false)}>
-                        <FaTimes/>
-                    </button>
+                    {/*<button className="close-btn" onClick={() => setIsOpen(false)}>*/}
+                    {/*    <FaTimes/>*/}
+                    {/*</button>*/}
+                {/*    You can enable the close btn here, but it will overlay on the nav bar*/}
+
+
                 </div>
 
                 <ul className="cart-list">

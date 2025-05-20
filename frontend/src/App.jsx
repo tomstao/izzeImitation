@@ -8,6 +8,7 @@ import ScrollingBanner from "./components/ScrollingBanner.jsx";
 import './css/HeroImg.css'
 import MiddleTransition from "./components/MiddleTransition.jsx";
 import ProductList from "./components/ProductList.jsx";
+import BackToTop from "./components/BackToTop.jsx";
 function App() {
     const [greeting, setGreeting] = useState('');
 
@@ -40,6 +41,7 @@ function App() {
             <div className='hero-img'></div>
             <MiddleTransition/>
             <FloatingCart/>
+            <BackToTop/>
             <Footer/>
         </div>
     );

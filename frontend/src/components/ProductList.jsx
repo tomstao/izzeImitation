@@ -24,7 +24,7 @@ function ProductList() {
                 {/* Popular Section */}
                 {popular.length > 0 && (
                     <>
-                        <h3 className="text-center mb-4">🌟 Popular Desserts</h3>
+                        <h3 className="text-center mb-4" id={'popular'}>🌟 Popular Desserts</h3>
                         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
                             {popular.map(product => (
                                 <div className="col d-flex justify-content-center" key={product.id}>
@@ -44,7 +44,7 @@ function ProductList() {
                 {/* Regular Section */}
                 {regular.length > 0 && (
                     <>
-                        <h3 className="text-center mb-4">More Desserts</h3>
+                        <h3 className="text-center mb-4" id={'more'}>More Desserts</h3>
                         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                             {regular.map(product => (
                                 <div className="col d-flex justify-content-center" key={product.id}>
