@@ -10,7 +10,7 @@ function Footer() {
                 <div className="col-md-3 mt-3 mx-1 px-5 footer-left">
                     <div className="text-md-center">
 
-                        <p><span className='h2'>JOINT THE PARTY</span></p>
+                        <p><span className='h2'>JOIN THE PARTY</span></p>
                         <p><span>Want to make every moment sweet? Try our desserts now!</span></p>
                         <SocialMedias/>
                     </div>
