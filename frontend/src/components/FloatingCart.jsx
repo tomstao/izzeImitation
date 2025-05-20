@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { FaShoppingCart, FaTimes, FaPlus, FaMinus, FaTrash } from 'react-icons/fa';
-import { useCart } from './CartContext.jsx';
+import {useState} from 'react';
+import {FaShoppingCart, FaTimes, FaPlus, FaMinus, FaTrash} from 'react-icons/fa';
+import {useCart} from './CartContext.jsx';
 import '/src/css/FloatingCart.css';
 
 function FloatingCart() {
-    const { cartItems, updateQuantity, removeFromCart } = useCart();
+    const {cartItems, updateQuantity, removeFromCart} = useCart();
     const total = cartItems.reduce(
         (sum, item) => sum + item.price * item.quantity,
         0
@@ -14,7 +14,7 @@ function FloatingCart() {
     return (
         <>
             <div className="floating-cart-icon" onClick={() => setIsOpen(true)}>
-                <FaShoppingCart size={24} />
+                <FaShoppingCart size={24}/>
                 <span className="cart-count">{cartItems.length}</span>
             </div>
 
@@ -24,7 +24,7 @@ function FloatingCart() {
                 <div className="cart-header">
                     <h4>Your Cart</h4>
                     <button className="close-btn" onClick={() => setIsOpen(false)}>
-                        <FaTimes />
+                        <FaTimes/>
                     </button>
                 </div>
 
@@ -38,16 +38,16 @@ function FloatingCart() {
                                     <strong>{item.name}</strong>
                                     <div className="cart-qty-control">
                                         <button onClick={() => updateQuantity(item.id, -1)}>
-                                            <FaMinus />
+                                            <FaMinus/>
                                         </button>
                                         <span>{item.quantity}</span>
                                         <button onClick={() => updateQuantity(item.id, 1)}>
-                                            <FaPlus />
+                                            <FaPlus/>
                                         </button>
                                     </div>
                                 </div>
                                 <button className="remove-btn" onClick={() => removeFromCart(item.id)}>
-                                    <FaTrash />
+                                    <FaTrash/>
                                 </button>
                             </li>
                         ))
@@ -59,7 +59,8 @@ function FloatingCart() {
                         <strong>Total:</strong>
                         <span>${total.toFixed(2)}</span>
                         <div className="checkout-btn-wrapper mt-3">
-                            <button className="checkout-btn" disabled={cartItems.length === 0} onClick={() => alert("Checkout not implemented yet!")}>
+                            <button className="checkout-btn" disabled={cartItems.length === 0}
+                                    onClick={() => alert("Checkout not implemented yet!")}>
                                 Checkout
                             </button>
                         </div>

@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import '/src/css/Card.css';
 import {useCart} from "./CartContext.jsx";
 
 function Card() {
     const [quantity, setQuantity] = useState(1);
-    const { addToCart } = useCart();
+    const {addToCart} = useCart();
 
     const product = {
         id: 'chocolate-cake',
@@ -17,8 +17,9 @@ function Card() {
     const decrement = () => setQuantity(prev => Math.max(1, prev - 1));
 
     return (
-        <div className="card border-0" style={{ width: '18rem' }}>
-            <img src="src/assets/desserts/strawberry_shorcake.jpg" className="card-img-top rounded-5 shadow" alt="dessert" />
+        <div className="card border-0" style={{width: '18rem'}}>
+            <img src="src/assets/desserts/strawberry_shorcake.jpg" className="card-img-top rounded-5 shadow"
+                 alt="dessert"/>
             <div className="card-body text-center">
                 <h5 className="card-title">Chocolate Cake</h5>
                 <p className="card-text">Rich and moist chocolate layered cake.</p>
