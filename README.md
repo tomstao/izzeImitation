@@ -1,12 +1,126 @@
-# React + Vite
+#Tao's Dessert Merchant Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A mock full-stack dessert ordering website built with **React**, **Flask**, and **PostgreSQL**.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Requirements
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Python 3.10+
+- PostgreSQL
+- Node.js + npm
+
+---
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/minimerchant.git
+cd minimerchant
+
+
+
+⸻
+Backend Setup (Flask)
+
+2. Create a PostgreSQL database
+
+createdb desserts_db
+
+3. Set up virtual environment
+
+cd backend
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+Make sure you have installed Flask, Flask-CORS, Flask-SQLAlchemy, and psycopg2-binary.
+
+⸻
+
+4. Create tables (via Flask shell or model)
+
+If using SQLAlchemy, include:
+
+from app import db
+db.create_all()
+
+
+
+⸻
+
+5. Seed product data
+
+psql -U your_postgres_username -d desserts_db -f seed_products.sql
+
+This will populate the products table with sample desserts.
+
+⸻
+
+6. Run the Flask backend
+
+python app.py
+
+Flask will start at:
+http://localhost:5000
+
+⸻
+
+Frontend Setup (React + Vite)
+
+7. Run the frontend
+
+cd ../frontend
+npm install
+npm run dev
+
+React app runs at:
+http://localhost:5173
+
+⸻
+
+Live Features
+	•	Browse desserts
+	•	View popular vs regular items
+	•	Add items to cart with adjustable quantity
+	•	See cart in a fullscreen drawer
+	•	View total and mock “Checkout” button
+
+⸻
+Seed File Info
+
+File: backend/seed_products.sql
+How to use:
+
+psql -U your_postgres_username -d desserts_db -f backend/seed_products.sql
+
+
+
+⸻
+
+Screenshots
+
+
+⸻
+
+For Instructor / Reviewer
+
+You only need to:
+	1.	Run seed_products.sql
+	2.	Start Flask backend
+	3.	Start React frontend
+
+All product cards will appear automatically from the database. 
+
+⸻
+
+License
+
+MIT License
+
+---
+
+Let me know if you'd like a short version, or if your project structure is slightly different and I can tweak it!
