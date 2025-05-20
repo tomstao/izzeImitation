@@ -122,5 +122,3 @@ License
 MIT License
 
 ---
-
-Let me know if you'd like a short version, or if your project structure is slightly different and I can tweak it!
