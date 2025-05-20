@@ -23,7 +23,7 @@ function Footer() {
                         <p><span className='footer-hover-text'>FLAVORS</span></p>
                     </div>
                     <div className="row footer-center mt-3">
-                        <p><span className='footer-hover-text'> OUR STORY</span></p>
+                        <p><span className='footer-hover-text'>OUR STORY</span></p>
 
                     </div>
                     <div className="row footer-center mt-3">
