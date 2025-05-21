@@ -3,6 +3,7 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask import request
 from werkzeug.security import generate_password_hash
+from werkzeug.security import check_password_hash
 
 app = Flask(__name__)
 CORS(app)
@@ -50,6 +51,33 @@ def register():
     db.session.commit()
 
     return jsonify({'message': 'User registered successfully! Click home to go back!'}), 201
+
+@app.route('/api/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+
+    if not email or not password:
+        return jsonify({'error': 'Email and password are required'}), 400
+
+    user = User.query.filter_by(email=email).first()
+
+    if not user:
+        return jsonify({'error': 'Invalid email or password'}), 401
+
+    if not check_password_hash(user.password_hash, password):
+        return jsonify({'error': 'Invalid email or password'}), 401
+
+    return jsonify({
+        'message': 'Login successful',
+        'user': {
+            'id': user.id,
+            'name': user.name,
+            'email': user.email,
+            'role': user.role
+        }
+    }), 200
 
 class Product(db.Model):
     __tablename__ = 'products'

@@ -62,7 +62,8 @@ import ProductList from './components/ProductList.jsx';
 import BackToTop from './components/BackToTop.jsx';
 
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import RegisterPage from './pages/RegisterPage.jsx'; // ✅ new page
+import RegisterPage from './pages/RegisterPage.jsx';
+import LoginPage from "./pages/LoginPage.jsx"; // ✅ new page
 
 function HomePage({ greeting }) {
     return (
@@ -86,20 +87,19 @@ function AppContent() {
             .catch(err => console.error(err));
     }, []);
 
-    const isRegisterPage = location.pathname === '/register';
-
+    const isAuthPage = location.pathname === '/register' || location.pathname === '/login';
     return (
         <div className="page-wrapper">
-            {!isRegisterPage && <Header />} {/* 👈 Only show Header if NOT on /register */}
-
+            {!isAuthPage && <Header />}
             <main className="flex-fill">
                 <Routes>
                     <Route path="/" element={<HomePage greeting={greeting} />} />
+                    <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
                 </Routes>
             </main>
 
-            {!isRegisterPage && (
+            {!isAuthPage && (
                 <>
                     <FloatingCart />
                     <BackToTop />
