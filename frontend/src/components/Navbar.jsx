@@ -1,13 +1,15 @@
 import {useEffect, useState} from "react";
 import MenuButton from "./MenuButton";
 import '/src/css/Navbar.css';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
+import LogoutButton from './LogoutButton';
+
 
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-
+    const user = localStorage.getItem('user');
     useEffect(() => {
         const onScroll = () => {
             setScrolled(window.scrollY > 100);
@@ -59,7 +61,13 @@ function Navbar() {
                             Register
                         </a>
                     </li>
+
                     <li><a href="#about">About</a></li>
+                    {user && (
+                        <li>
+                            <LogoutButton />
+                        </li>
+                    )}
                 </ul>
             </div>
         </>

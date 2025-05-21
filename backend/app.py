@@ -79,6 +79,26 @@ def login():
         }
     }), 200
 
+@app.route('/api/checkout', methods=['POST'])
+def checkout():
+    data = request.get_json()
+    user_id = data.get('user_id')
+    items = data.get('items')
+    total_price = data.get('total_price')
+
+    if not all([user_id, items, total_price]):
+        return jsonify({'error': 'Missing data'}), 400
+
+    new_order = Order(
+        user_id=user_id,
+        items=str(items),
+        total_price=total_price
+    )
+    db.session.add(new_order)
+    db.session.commit()
+
+    return jsonify({'message': 'Order placed successfully'}), 201
+
 class Product(db.Model):
     __tablename__ = 'products'
 

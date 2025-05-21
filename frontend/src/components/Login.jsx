@@ -14,7 +14,7 @@ function Login() {
         try {
             const res = await axios.post('http://localhost:5000/api/login', form);
             setMessage(res.data.message);
-            // localStorage.setItem('user', JSON.stringify(res.data.user));
+            localStorage.setItem('user', JSON.stringify(res.data.user));
         } catch (err) {
             setMessage(err.response?.data?.error || 'Login failed');
         }

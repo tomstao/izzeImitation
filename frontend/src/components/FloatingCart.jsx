@@ -2,8 +2,10 @@ import {useState} from 'react';
 import {FaShoppingCart, FaTimes, FaPlus, FaMinus, FaTrash} from 'react-icons/fa';
 import {useCart} from './CartContext.jsx';
 import '/src/css/FloatingCart.css';
+import axios from 'axios';
 
 function FloatingCart() {
+    const user = JSON.parse(localStorage.getItem('user'));
     const {cartItems, updateQuantity, removeFromCart} = useCart();
     const total = cartItems.reduce(
         (sum, item) => sum + item.price * item.quantity,
@@ -26,8 +28,6 @@ function FloatingCart() {
                     {/*<button className="close-btn" onClick={() => setIsOpen(false)}>*/}
                     {/*    <FaTimes/>*/}
                     {/*</button>*/}
-                {/*    You can enable the close btn here, but it will overlay on the nav bar*/}
-
 
                 </div>
 
@@ -63,7 +63,25 @@ function FloatingCart() {
                         <span>${total.toFixed(2)}</span>
                         <div className="checkout-btn-wrapper mt-3">
                             <button className="checkout-btn" disabled={cartItems.length === 0}
-                                    onClick={() => alert("Checkout not implemented yet!")}>
+                                    onClick={async () => {
+                                        if (!user) {
+                                            alert("Please login to checkout.");
+                                            return;
+                                        }
+
+                                        try {
+                                            const res = await axios.post('http://localhost:5000/api/checkout', {
+                                                user_id: user.id,
+                                                items: JSON.stringify(cartItems),
+                                                total_price: parseFloat(total.toFixed(2))
+                                            });
+                                            alert("🎉 " + res.data.message);
+                                            window.location.reload();
+                                        } catch (err) {
+                                            console.error('Checkout error:', err.response?.data || err.message);
+                                            alert("❌ Checkout failed");
+                                        }
+                                    }}>
                                 Checkout
                             </button>
                         </div>
