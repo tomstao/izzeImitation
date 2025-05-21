@@ -20,7 +20,7 @@ cd minimerchant
 
 
 
-⸻
+
 Backend Setup (Flask)
 
 2. Create a PostgreSQL database
@@ -38,7 +38,7 @@ pip install -r requirements.txt
 
 Make sure you have installed Flask, Flask-CORS, Flask-SQLAlchemy, and psycopg2-binary.
 
-⸻
+
 
 4. Create tables (via Flask shell or model)
 
@@ -49,7 +49,7 @@ db.create_all()
 
 
 
-⸻
+
 
 5. Seed product data
 
@@ -57,7 +57,7 @@ psql -U your_postgres_username -d desserts_db -f seed_products.sql
 
 This will populate the products table with sample desserts.
 
-⸻
+
 
 6. Run the Flask backend
 
@@ -66,7 +66,7 @@ python app.py
 Flask will start at:
 http://localhost:5000
 
-⸻
+
 
 Frontend Setup (React + Vite)
 
@@ -78,6 +78,15 @@ npm run dev
 
 React app runs at:
 http://localhost:5173
+
+For Instructor / Reviewer
+
+You only need to:
+	1.	Run seed_products.sql
+	2.	Start Flask backend
+	3.	Start React frontend
+
+All product cards will appear automatically from the database.
 
 ⸻
 
@@ -106,14 +115,6 @@ Screenshots
 
 ⸻
 
-For Instructor / Reviewer
-
-You only need to:
-	1.	Run seed_products.sql
-	2.	Start Flask backend
-	3.	Start React frontend
-
-All product cards will appear automatically from the database.
 
 ⸻
 
