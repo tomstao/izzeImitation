@@ -37,7 +37,7 @@ function Register() {
                 <input name="email" type="email" placeholder="Email" className="form-control mb-3" onChange={handleChange} required />
                 <input name="password" type="password" placeholder="Password" className="form-control mb-3" onChange={handleChange} required />
                 <input name="confirm" type="password" placeholder="Confirm Password" className="form-control mb-3" onChange={handleChange} required />
-                <button type="submit" className="btn btn-primary w-100">Register</button>
+                <button type="submit" className="btn btn-primary w-100 border-0" style={{backgroundColor:"#9d1347" }}>Register</button>
             </form>
         </div>
     );

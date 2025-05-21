@@ -90,13 +90,15 @@ function AppContent() {
 
     return (
         <div className="page-wrapper">
-            <Header />
+            {!isRegisterPage && <Header />} {/* 👈 Only show Header if NOT on /register */}
+
             <main className="flex-fill">
                 <Routes>
                     <Route path="/" element={<HomePage greeting={greeting} />} />
                     <Route path="/register" element={<RegisterPage />} />
                 </Routes>
             </main>
+
             {!isRegisterPage && (
                 <>
                     <FloatingCart />

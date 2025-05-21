@@ -1,0 +1,10 @@
+:root {
+    --primary-color: #9d1347;         /* deep pinkish red */
+    --secondary-color: #ef88ad;      /* soft pink */
+    --background-color: #f5f5dc;     /* beige */
+    --text-color: #333;
+    --white: #ffffff;
+}
+.registerTitle {
+    color: var(--primary-color)!important;
+}

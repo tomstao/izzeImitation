@@ -1,5 +1,6 @@
 import SocialMedias from "/src/components/SocialMedias.jsx";
 import '/src/css/Footer.css'
+import FooterHomeLink from "./FooterHomeLink.jsx";
 
 
 function Footer() {
@@ -29,6 +30,8 @@ function Footer() {
                     <div className="row footer-center mt-3">
                         <p><span className='footer-hover-text'>CONTACT</span></p>
                     </div>
+
+                    <FooterHomeLink/>
 
                 </div>
                 <hr className="my-3 border border-2 footer-divider"/>

@@ -28,6 +28,8 @@ function Navbar() {
         };
     }, [menuOpen]);
 
+
+
     return (
         <>
             <nav
@@ -44,9 +46,18 @@ function Navbar() {
                     <li><a href="/login">Login</a></li>
 
                     <li>
-                        <Link to="/register" onClick={() => setMenuOpen(false)}>
+                        {/*<Link to="/register" onClick={() => setMenuOpen(false)}>*/}
+                        {/*    Register*/}
+                        {/*</Link>*/}
+                        {/*<a href="/register" target="_blank" rel="noopener noreferrer">Register</a>*/}
+                        <a
+                            href="/register#register-page"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => setMenuOpen(false)}
+                        >
                             Register
-                        </Link>
+                        </a>
                     </li>
                     <li><a href="#about">About</a></li>
                 </ul>
