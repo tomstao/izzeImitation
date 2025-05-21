@@ -1,8 +1,6 @@
 #Tao's Dessert Merchant Website
 
 A mock full-stack dessert ordering website built with **React**, **Flask**, and **PostgreSQL**.
-
-
 ---
 
 ## Requirements
@@ -33,7 +31,9 @@ createdb desserts_db
 3. Set up virtual environment
 
 cd backend
-python3 -m venv venv
+python3 -m venv venv // or python -m venv venv
+
+
 source venv/bin/activate
 pip install -r requirements.txt
 
@@ -96,14 +96,13 @@ File: backend/seed_products.sql
 How to use:
 
 psql -U your_postgres_username -d desserts_db -f backend/seed_products.sql
+The cards display depends on the data seed, if you can't see the crads, please seed the data first
 
 
 
 ⸻
 
 Screenshots
-
-
 ⸻
 
 For Instructor / Reviewer
