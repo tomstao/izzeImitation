@@ -99,13 +99,57 @@ Live Features
 	•	View total and mock “Checkout” button
 
 ⸻
+Schema:
+-- USERS table
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) UNIQUE NOT NULL,
+    email VARCHAR(120) UNIQUE NOT NULL,
+    password_hash VARCHAR(128) NOT NULL,
+    role VARCHAR(20) DEFAULT 'user',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- PRODUCTS table
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    description TEXT,
+    price NUMERIC(10, 2) NOT NULL,
+    image_url TEXT,
+    is_popular BOOLEAN DEFAULT FALSE
+);
+
+-- ORDERS table
+CREATE TABLE orders (
+    order_id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    items TEXT NOT NULL, 
+    total_price NUMERIC(10, 2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+  
+  CREATE TABLE order_items (
+    order_item_id SERIAL PRIMARY KEY,
+    order_id INTEGER REFERENCES orders(order_id) ON DELETE CASCADE,
+    product_id INTEGER REFERENCES products(id) ON DELETE SET NULL,
+    quantity INTEGER NOT NULL,
+    price NUMERIC(10, 2) NOT NULL
+);
+  
 Seed File Info
 
 File: backend/seed_products.sql
 How to use:
+##  Load Product Seed Data
 
+1. Make sure PostgreSQL is running and the `desserts_db` database exists.
+2. From the project root, run:
+
+```bash
 psql -U your_postgres_username -d desserts_db -f backend/seed_products.sql
-The cards display depends on the data seed, if you can't see the crads, please seed the data first
+The cards display depends on the data seed, if you can't see the cards, please seed the data first
+
 
 
 
