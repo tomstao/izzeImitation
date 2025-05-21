@@ -1,6 +1,8 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+from flask import request
+from werkzeug.security import generate_password_hash
 
 app = Flask(__name__)
 CORS(app)
@@ -27,6 +29,28 @@ def get_products():
         for p in products
     ])
 
+@app.route('/api/register', methods=['POST'])
+def register():
+    data = request.get_json()
+    name = data.get('username')
+    email = data.get('email')
+    password = data.get('password')
+
+    if not all([name, email, password]):
+        return jsonify({'error': 'All fields are required'}), 400
+
+    existing_user = User.query.filter((User.email == email) | (User.name == name)).first()
+    if existing_user:
+        return jsonify({'error': 'Email or username already exists'}), 409
+
+    hashed_password = generate_password_hash(password)
+
+    new_user = User(name=name, email=email, password_hash=hashed_password)
+    db.session.add(new_user)
+    db.session.commit()
+
+    return jsonify({'message': 'User registered successfully! Click home to go back!'}), 201
+
 class Product(db.Model):
     __tablename__ = 'products'
 
@@ -45,6 +69,17 @@ class Order(db.Model):
     items = db.Column(db.Text, nullable=False)
     total_price = db.Column(db.Numeric(10, 2), nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
+
+class User(db.Model):
+    __tablename__ = 'users'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), unique=True, nullable=False)  # username
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password_hash = db.Column(db.String(128), nullable=False)
+    role = db.Column(db.String(20), default='user')
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    orders = db.relationship('Order', backref='user', lazy=True)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
