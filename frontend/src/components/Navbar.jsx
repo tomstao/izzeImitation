@@ -1,6 +1,8 @@
 import {useEffect, useState} from "react";
 import MenuButton from "./MenuButton";
 import '/src/css/Navbar.css';
+import {Link} from 'react-router-dom';
+
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -40,7 +42,12 @@ function Navbar() {
             <div className={`menu-overlay ${menuOpen ? 'open' : 'closed'}`}>
                 <ul className="menu-links">
                     <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Register</a></li>
+
+                    <li>
+                        <Link to="/register" onClick={() => setMenuOpen(false)}>
+                            Register
+                        </Link>
+                    </li>
                     <li><a href="#about">About</a></li>
                 </ul>
             </div>
