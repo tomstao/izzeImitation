@@ -1,7 +1,6 @@
 #Tao's Dessert Merchant Website
 
-A mock full-stack dessert ordering website built with **React**, **Flask**, and **PostgreSQL**.
----
+## A mock full-stack dessert ordering website built with **React**, **Flask**, and **PostgreSQL**.
 
 ## Requirements
 
@@ -103,6 +102,8 @@ The cards display depends on the data seed, if you can't see the crads, please s
 ⸻
 
 Screenshots
+
+
 ⸻
 
 For Instructor / Reviewer
@@ -112,7 +113,7 @@ You only need to:
 	2.	Start Flask backend
 	3.	Start React frontend
 
-All product cards will appear automatically from the database. 
+All product cards will appear automatically from the database.
 
 ⸻
 
@@ -121,3 +122,4 @@ License
 MIT License
 
 ---
+```
