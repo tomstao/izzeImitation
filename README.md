@@ -1,8 +1,19 @@
-#Tao's Dessert e-commerce Website
+# Tao's Dessert e-Commerce Website
 
-## A mock full-stack dessert ordering website built with **React**, **Flask**, and **PostgreSQL**.
+A mock full-stack dessert ordering web app built with **React**, **Flask**, and **PostgreSQL**. This app allows users to register, log in, browse dessert items, add them to a cart, and simulate checkout. It was created as part of the QCC Software Engineering Bootcamp.(This is a new README.md if you want to see the old one, please check out the previousREDEME folder.)
 
-## Requirements
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React, Bootstrap, Vite
+- **Backend**: Flask, Flask-CORS, Flask-SQLAlchemy
+- **Database**: PostgreSQL
+- **Other**: Axios, FontAwesome, React Icons
+
+---
+
+## ⚙️ Requirements
 
 - Python 3.10+
 - PostgreSQL
@@ -10,97 +21,88 @@
 
 ---
 
-## Getting Started
+## 🚀 Getting Started
 
-### 
+### 1. Clone the repository
 
 ```bash
-1. Clone the repository
-git clone https://github.com/your-username/minimerchant.git
-cd minimerchant
+# Clone the repository
+git clone https://github.com/tomstao/izzeImitation.git
 
+# Set up the backend
+cd izzeImitation/backend
+# After backend setup, switch to frontend
+cd ../frontend
+# if you are in the root folder, simply use cd backend or cd frontend
+```
+# 
+### 2. Setup the PostgreSQL database
 
-
-
-Backend Setup (Flask)
-
-2. Create a PostgreSQL database
-
+```bash
 createdb desserts_db
+```
 
-3. Set up virtual environment
+### 3. Backend Setup (Flask)
 
+```bash
 cd backend
-python3 -m venv venv // or python -m venv venv
-
-
+python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+```
 
-Make sure you have installed Flask, Flask-CORS, Flask-SQLAlchemy, and psycopg2-binary.
+Initialize the database:
 
+```bash
+python
+>>> from app import db
+>>> db.create_all()
+>>> exit()
+```
 
+### 4. Seed full database (products, users, orders)
 
-4. Create tables (via Flask shell or model)
+```bash
+psql -U your_postgres_username -d desserts_db -f backend/seed_full.sql
+```
 
-If using SQLAlchemy, include:
+### 5. Run the backend
 
-from app import db
-db.create_all()
-
-
-
-
-
-5. Seed product data
-
-psql -U your_postgres_username -d desserts_db -f seed_products.sql
-
-This will populate the products table with sample desserts.
-
-
-
-6. Run the Flask backend
-
+```bash
 python app.py
+```
 
-Flask will start at:
-http://localhost:5000
+Flask will start at: [http://localhost:5000](http://localhost:5000)
 
+---
 
+### 6. Frontend Setup (React)
 
-Frontend Setup (React + Vite)
-
-7. Run the frontend
-
+```bash
 cd ../frontend
 npm install
 npm run dev
+```
 
-React app runs at:
-http://localhost:5173
+Frontend will run at: [http://localhost:5173](http://localhost:5173)
 
-For Instructor / Reviewer
+---
 
-You only need to:
-	1.	Run seed_products.sql
-	2.	Start Flask backend
-	3.	Start React frontend
+## ✅ Features
 
-All product cards will appear automatically from the database.
+- Browse dessert cards
+- View popular vs regular desserts
+- Add items to cart with adjustable quantity
+- Register & login with secure password hashing
+- View total and simulate checkout
+- Order is stored with user and item info
 
-⸻
+---
 
-Live Features
-	•	Browse desserts
-	•	View popular vs regular items
-	•	Add items to cart with adjustable quantity
-	•	See cart in a fullscreen drawer
-	•	View total and mock “Checkout” button
+## 📦 Database Schema
 
-⸻
-Schema:
--- USERS table
+```sql
+-- USERS
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) UNIQUE NOT NULL,
@@ -110,7 +112,7 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- PRODUCTS table
+-- PRODUCTS
 CREATE TABLE products (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
@@ -120,52 +122,49 @@ CREATE TABLE products (
     is_popular BOOLEAN DEFAULT FALSE
 );
 
--- ORDERS table
+-- ORDERS
 CREATE TABLE orders (
     order_id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-    items TEXT NOT NULL, 
+    items TEXT NOT NULL,
     total_price NUMERIC(10, 2) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-  
-  CREATE TABLE order_items (
+
+-- ORDER_ITEMS
+CREATE TABLE order_items (
     order_item_id SERIAL PRIMARY KEY,
     order_id INTEGER REFERENCES orders(order_id) ON DELETE CASCADE,
     product_id INTEGER REFERENCES products(id) ON DELETE SET NULL,
     quantity INTEGER NOT NULL,
     price NUMERIC(10, 2) NOT NULL
 );
-  
-Seed File Info
-
-File: backend/seed_products.sql
-How to use:
-##  Load Product Seed Data
-
-1. Make sure PostgreSQL is running and the `desserts_db` database exists.
-2. From the project root, run:
-
-```bash
-psql -U your_postgres_username -d desserts_db -f backend/seed_products.sql
-The cards display depends on the data seed, if you can't see the cards, please seed the data first
-
-
-
-
-⸻
-
-Screenshots
-
-
-⸻
-
-
-⸻
-
-License
-
-MIT License
+```
 
 ---
+
+## 📂 Data Seed Info
+
+**File**: `backend/seed_full.sql`
+
+This file contains insert data for all tables: products, users, and orders.
+
+### Load the data:
+
+```bash
+psql -U your_postgres_username -d desserts_db -f backend/seed_full.sql
 ```
+
+If cards don’t show up, make sure the seed data was loaded correctly.
+
+---
+
+## 🖼️ Screenshots
+
+_(Coming soon..)_
+
+---
+
+## 📝 License
+
+MIT License
