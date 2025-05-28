@@ -1,4 +1,4 @@
-#Tao's Dessert Merchant Website
+#Tao's Dessert e-commerce Website
 
 ## A mock full-stack dessert ordering website built with **React**, **Flask**, and **PostgreSQL**.
 
