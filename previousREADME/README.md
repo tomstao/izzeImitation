@@ -1,6 +1,7 @@
 #Tao's Dessert e-commerce Website
 
-## A mock full-stack dessert ordering website built with **React**, **Flask**, and **PostgreSQL**.
+## A mock full-stack dessert ordering website built with **React**, **Flask**, and **PostgreSQL**
+This project is still a work in progress — a few features are being added and some bugs are being fixed. Thanks for your patience and your liking!
 
 ## Requirements
 
