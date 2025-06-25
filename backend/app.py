@@ -87,17 +87,95 @@ def checkout():
     total_price = data.get('total_price')
 
     if not all([user_id, items, total_price]):
-        return jsonify({'error': 'Missing data'}), 400
+        return jsonify({'error': 'Missing required data: user_id, items, and total_price are required'}), 400
 
-    new_order = Order(
-        user_id=user_id,
-        items=str(items),
-        total_price=total_price
-    )
-    db.session.add(new_order)
-    db.session.commit()
+    # Validate user exists
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
 
-    return jsonify({'message': 'Order placed successfully'}), 201
+    # Validate items is not empty
+    try:
+        items_data = items if isinstance(items, str) else str(items)
+        if not items_data or items_data == '[]':
+            return jsonify({'error': 'Cart is empty'}), 400
+    except Exception as e:
+        return jsonify({'error': 'Invalid items data format'}), 400
+
+    # Validate total_price is a valid number
+    try:
+        total_price = float(total_price)
+        if total_price <= 0:
+            return jsonify({'error': 'Total price must be greater than 0'}), 400
+    except (ValueError, TypeError):
+        return jsonify({'error': 'Invalid total price format'}), 400
+
+    try:
+        # Create the order
+        new_order = Order(
+            user_id=user_id,
+            total_price=total_price
+        )
+        db.session.add(new_order)
+        db.session.flush()  # Get the order_id
+        
+        # Parse items and create order_items
+        items_list = items if isinstance(items, list) else eval(items)
+        for item in items_list:
+            order_item = OrderItem(
+                order_id=new_order.order_id,
+                product_id=item['id'],
+                quantity=item['quantity'],
+                price=float(item['price'])
+            )
+            db.session.add(order_item)
+        
+        db.session.commit()
+
+        return jsonify({
+            'message': 'Order placed successfully',
+            'order_id': new_order.order_id,
+            'total': float(new_order.total_price)
+        }), 201
+    except Exception as e:
+        db.session.rollback()
+        print(f"Checkout error: {str(e)}")  # For debugging
+        return jsonify({'error': 'Failed to create order. Please try again.'}), 500
+
+@app.route('/api/orders/<int:user_id>', methods=['GET'])
+def get_user_orders(user_id):
+    # Validate user exists
+    user = User.query.get(user_id)
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+
+    try:
+        orders = Order.query.filter_by(user_id=user_id).order_by(Order.created_at.desc()).all()
+        result = []
+        for order in orders:
+            # Get order items
+            order_items = OrderItem.query.filter_by(order_id=order.order_id).all()
+            items_data = []
+            for item in order_items:
+                product = Product.query.get(item.product_id)
+                items_data.append({
+                    'id': item.product_id,
+                    'name': product.name if product else 'Unknown Product',
+                    'price': float(item.price),
+                    'quantity': item.quantity
+                })
+            
+            result.append({
+                'order_id': order.order_id,
+                'items': items_data,
+                'total_price': float(order.total_price),
+                'created_at': order.created_at.isoformat() if order.created_at else None
+            })
+        
+        return jsonify(result), 200
+    except Exception as e:
+        print(f"Get orders error: {str(e)}")  # For debugging
+        return jsonify({'error': 'Failed to retrieve orders'}), 500
 
 class Product(db.Model):
     __tablename__ = 'products'
@@ -114,9 +192,18 @@ class Order(db.Model):
 
     order_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    items = db.Column(db.Text, nullable=False)
     total_price = db.Column(db.Numeric(10, 2), nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
+    order_items = db.relationship('OrderItem', backref='order', lazy=True, cascade='all, delete-orphan')
+
+class OrderItem(db.Model):
+    __tablename__ = 'order_items'
+
+    order_item_id = db.Column(db.Integer, primary_key=True)
+    order_id = db.Column(db.Integer, db.ForeignKey('orders.order_id'), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+    price = db.Column(db.Numeric(10, 2), nullable=False)
 
 class User(db.Model):
     __tablename__ = 'users'
