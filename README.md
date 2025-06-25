@@ -1,170 +1,343 @@
 # Tao's Dessert e-Commerce Website
 
-A mock full-stack dessert ordering web app built with **React**, **Flask**, and **PostgreSQL**. This app allows users to register, log in, browse dessert items, add them to a cart, and simulate checkout. It was created as part of the QCC Software Engineering Bootcamp.(This is a new README.md if you want to see the old one, please check out the previousREDEME folder.)
+A modern full-stack dessert ordering web app built with **React**, **Flask**, and **PostgreSQL**. Features user authentication, shopping cart functionality, order management, and a beautiful Material Design-inspired interface.
+
+## ✨ Features
+
+### 🛒 **Shopping Experience**
+
+- **Browse desserts** with beautiful product cards
+- **Add items to cart** with quantity controls
+- **Real-time cart updates** with floating cart drawer
+- **Smart notifications** when items are added to cart
+- **Seamless checkout** process with order confirmation
+
+### 🔐 **User Authentication**
+
+- **User registration** with secure password hashing
+- **User login** with automatic redirect to home page
+- **Profile management** with order history
+- **Dynamic navbar** that adapts to login status
+
+### 📱 **Modern UI/UX**
+
+- **Material Design-inspired** interface
+- **Responsive design** for all screen sizes
+- **Interactive menus** with mutual closing logic
+- **Smooth animations** and transitions
+- **Loading states** and error handling
+
+### 🛍️ **Order Management**
+
+- **Complete order history** in user profiles
+- **Expandable order details** with item breakdowns
+- **Order tracking** with timestamps and totals
+- **Database persistence** with proper relationships
+
+### 🎨 **Visual Design**
+
+- **Gradient themes** with brand colors (#9d1347, #ef88ad)
+- **Beautiful product images** and layouts
+- **Modern typography** and spacing
+- **Consistent styling** throughout the app
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React, Bootstrap, Vite
-- **Backend**: Flask, Flask-CORS, Flask-SQLAlchemy
-- **Database**: PostgreSQL
-- **Other**: Axios, FontAwesome, React Icons
+### **Frontend**
+
+- **React 18** with Vite for fast development
+- **React Router** for navigation
+- **Context API** for state management
+- **Axios** for API communication
+- **Bootstrap 5** for responsive components
+- **React Icons** for beautiful icons
+- **Custom CSS** with Material Design principles
+
+### **Backend**
+
+- **Flask** web framework
+- **Flask-SQLAlchemy** for database ORM
+- **Flask-CORS** for cross-origin requests
+- **Werkzeug** for password hashing
+- **PostgreSQL** for data persistence
+
+### **Database**
+
+- **PostgreSQL** with proper relationships
+- **Users table** for authentication
+- **Products table** for dessert catalog
+- **Orders table** for order management
+- **Order_items table** for order details
 
 ---
 
 ## ⚙️ Requirements
 
-- Python 3.10+
-- PostgreSQL
-- Node.js + npm
+- **Python 3.10+**
+- **PostgreSQL 12+**
+- **Node.js 16+** and npm
+- **Git** for version control
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Clone the repository
+### 1. **Clone the Repository**
 
 ```bash
-# Clone the repository
 git clone https://github.com/tomstao/izzeImitation.git
-
-# Set up the backend
-cd izzeImitation/backend
-# After backend setup, switch to frontend
-cd ../frontend
-# if you are in the root folder, simply use cd backend or cd frontend
+cd izzeImitation
 ```
-# 
-### 2. Setup the PostgreSQL database
+
+### 2. **Database Setup**
 
 ```bash
+# Create PostgreSQL database
 createdb desserts_db
+
+# Or if you prefer a different name
+createdb your_database_name
 ```
 
-### 3. Backend Setup (Flask)
+### 3. **Backend Setup**
 
 ```bash
 cd backend
-python -m venv venv
+
+# Create virtual environment
+python3 -m venv venv
+
+# Activate virtual environment
+# On macOS/Linux:
 source venv/bin/activate
+# On Windows:
+venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
-```
 
-Initialize the database:
+# Update database connection (if needed)
+# Edit app.py and change the database URI:
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@localhost:5432/database_name'
 
-```bash
-python
+# Initialize database tables
+python3
 >>> from app import db
 >>> db.create_all()
 >>> exit()
 ```
 
-### 4. Seed full database (products, users, orders)
+### 4. **Seed the Database**
 
 ```bash
-psql -U your_postgres_username -d desserts_db -f backend/seed_full.sql
+# Seed with sample data (users, products, orders)
+psql -U your_postgres_username -d desserts_db -f backend/seed_data.sql
 ```
 
-### 5. Run the backend
+### 5. **Run the Backend**
 
 ```bash
-python app.py
+python3 app.py
 ```
 
-Flask will start at: [http://localhost:5000](http://localhost:5000)
+The Flask server will start at: [http://localhost:5000](http://localhost:5000)
 
----
-
-### 6. Frontend Setup (React)
+### 6. **Frontend Setup**
 
 ```bash
 cd ../frontend
+
+# Install dependencies
 npm install
+
+# Start development server
 npm run dev
 ```
 
-Frontend will run at: [http://localhost:5173](http://localhost:5173)
+The React app will start at: [http://localhost:5173](http://localhost:5173)
 
 ---
 
-## ✅ Features
+## 📊 Database Schema
 
-- Browse dessert cards
-- View popular vs regular desserts
-- Add items to cart with adjustable quantity
-- Register & login with secure password hashing
-- View total and simulate checkout
-- Order is stored with user and item info
-
----
-
-## 📦 Database Schema
+### **Users Table**
 
 ```sql
--- USERS
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100) UNIQUE NOT NULL,
-    email VARCHAR(120) UNIQUE NOT NULL,
-    password_hash VARCHAR(128) NOT NULL,
-    role VARCHAR(20) DEFAULT 'user',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+- id (Primary Key)
+- name (Username, unique)
+- email (Unique)
+- password_hash (Hashed password)
+- role (Default: 'user')
+- created_at (Timestamp)
+```
 
--- PRODUCTS
-CREATE TABLE products (
-    id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL,
-    description TEXT,
-    price NUMERIC(10, 2) NOT NULL,
-    image_url TEXT,
-    is_popular BOOLEAN DEFAULT FALSE
-);
+### **Products Table**
 
--- ORDERS
-CREATE TABLE orders (
-    order_id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-    items TEXT NOT NULL,
-    total_price NUMERIC(10, 2) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+```sql
+- id (Primary Key)
+- name (Product name)
+- description (Product description)
+- price (Decimal)
+- image_url (Product image path)
+- is_popular (Boolean flag)
+```
 
--- ORDER_ITEMS
-CREATE TABLE order_items (
-    order_item_id SERIAL PRIMARY KEY,
-    order_id INTEGER REFERENCES orders(order_id) ON DELETE CASCADE,
-    product_id INTEGER REFERENCES products(id) ON DELETE SET NULL,
-    quantity INTEGER NOT NULL,
-    price NUMERIC(10, 2) NOT NULL
-);
+### **Orders Table**
+
+```sql
+- order_id (Primary Key)
+- user_id (Foreign Key to users)
+- total_price (Decimal)
+- created_at (Timestamp)
+```
+
+### **Order_Items Table**
+
+```sql
+- order_item_id (Primary Key)
+- order_id (Foreign Key to orders)
+- product_id (Foreign Key to products)
+- quantity (Integer)
+- price (Decimal at time of purchase)
 ```
 
 ---
 
-## 📂 Data Seed Info
+## 🔧 API Endpoints
 
-**File**: `backend/seed_full.sql`
+### **Authentication**
 
-This file contains insert data for all tables: products, users, and orders.
+- `POST /api/register` - User registration
+- `POST /api/login` - User login
 
-### Load the data:
+### **Products**
 
-```bash
-psql -U your_postgres_username -d desserts_db -f backend/seed_full.sql
-```
+- `GET /api/products` - Get all products
+- `GET /api/greeting` - Get welcome message
 
-If cards don’t show up, make sure the seed data was loaded correctly.
+### **Orders**
 
----
-
-## 🖼️ Screenshots
-
-_(Coming soon..)_
+- `POST /api/checkout` - Create new order
+- `GET /api/orders/<user_id>` - Get user's order history
 
 ---
 
-## 📝 License
+## 🎯 Key Features Explained
 
-MIT License
+### **Shopping Cart System**
+
+- **Context-based state management** for cart items
+- **Persistent cart** during session
+- **Quantity controls** with increment/decrement
+- **Real-time total calculation**
+- **Cart clearing** after successful checkout
+
+### **User Authentication Flow**
+
+- **Secure registration** with password hashing
+- **Login validation** with proper error handling
+- **Automatic redirects** after successful login
+- **Session management** with localStorage
+
+### **Order Management**
+
+- **Relational database** design for data integrity
+- **Order history** with detailed item breakdown
+- **Timestamp tracking** for order management
+- **User-specific orders** with proper relationships
+
+### **UI/UX Features**
+
+- **Mutual menu closing** - only one menu open at a time
+- **Snackbar notifications** for user feedback
+- **Loading states** for better UX
+- **Error handling** with user-friendly messages
+- **Responsive design** for mobile and desktop
+
+---
+
+## 🎨 Customization
+
+### **Styling**
+
+- **Primary color**: #9d1347 (deep pinkish red)
+- **Secondary color**: #ef88ad (soft pink)
+- **Background**: #f5f5dc (beige)
+- **Text color**: #333 (dark gray)
+
+### **Adding New Products**
+
+1. Add product data to the database
+2. Upload product images to `/public/assets/desserts/`
+3. Update the products table with new entries
+
+### **Modifying Features**
+
+- **Cart behavior**: Edit `CartContext.jsx`
+- **UI components**: Modify individual component files
+- **API endpoints**: Update `backend/app.py`
+- **Database schema**: Modify models and run migrations
+
+---
+
+## 🐛 Troubleshooting
+
+### **Common Issues**
+
+**Backend won't start:**
+
+- Check if PostgreSQL is running
+- Verify database connection string
+- Ensure all dependencies are installed
+
+**Frontend build errors:**
+
+- Clear node_modules and reinstall: `rm -rf node_modules && npm install`
+- Check for port conflicts
+- Verify all imports are correct
+
+**Database connection issues:**
+
+- Verify PostgreSQL is running
+- Check username/password in connection string
+- Ensure database exists
+
+### **Development Tips**
+
+- Use browser dev tools for frontend debugging
+- Check Flask logs for backend errors
+- Use PostgreSQL logs for database issues
+- Test API endpoints with curl or Postman
+
+---
+
+## 📝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+---
+
+## 📄 License
+
+This project is created as part of the QCC Software Engineering Bootcamp.
+
+---
+
+## 👨‍💻 Author
+
+**Tao Su** - QCC Software Engineering Bootcamp Student
+
+---
+
+## 🎉 Acknowledgments
+
+- QCC Software Engineering Bootcamp instructors
+- React and Flask communities
+- Material Design principles
+- All dessert lovers who inspired this project! 🍰
